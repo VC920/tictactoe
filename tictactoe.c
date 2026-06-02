@@ -112,17 +112,17 @@ void draw_board(char board[BOARD_ROW][BOARD_COL])
                     float inner_radius = (BOARD_CELL_SIZE / 2.0f) - 20;
                     float outer_radius = (BOARD_CELL_SIZE / 2.0f) - 10;
 
-                    DrawRing(center, inner_radius, outer_radius, 0, 360, 0, BLACK);
+                    DrawRing(center, inner_radius, outer_radius, 0, 360, 0, BLUE);
                     break;
                 }
                 case 'X': {
-                    Vector2 left_top     = (Vector2){ j * BOARD_CELL_SIZE + 10, i * BOARD_CELL_SIZE + 10};
-                    Vector2 right_bottom = (Vector2){ (j + 1) * BOARD_CELL_SIZE - 10, (i + 1) * BOARD_CELL_SIZE - 10};
-                    Vector2 left_right   = (Vector2){ (j + 1) * BOARD_CELL_SIZE - 10, i * BOARD_CELL_SIZE + 10};
-                    Vector2 right_top    = (Vector2){ j * BOARD_CELL_SIZE + 10, (i + 1) * BOARD_CELL_SIZE - 10};
+                    Vector2 left_top     = (Vector2){ j * BOARD_CELL_SIZE + 30, i * BOARD_CELL_SIZE + 30};
+                    Vector2 right_bottom = (Vector2){ (j + 1) * BOARD_CELL_SIZE - 30, (i + 1) * BOARD_CELL_SIZE - 30};
+                    Vector2 left_right   = (Vector2){ (j + 1) * BOARD_CELL_SIZE - 30, i * BOARD_CELL_SIZE + 30};
+                    Vector2 right_top    = (Vector2){ j * BOARD_CELL_SIZE + 30, (i + 1) * BOARD_CELL_SIZE - 30};
 
-                    DrawLineEx(left_top  , right_bottom, 10, BLACK);
-                    DrawLineEx(left_right, right_top   , 10, BLACK);
+                    DrawLineEx(left_top  , right_bottom, 10, RED);
+                    DrawLineEx(left_right, right_top   , 10, RED);
                     break;
                 }
                 default:
@@ -164,12 +164,11 @@ int main()
 
             draw_board(board);
             if (game_state == GAME_RUN) {
-                DrawText(TextFormat("player: %s", player_str(player)), 10, 10, 32, RED);
+                DrawText(TextFormat("player: %s", player_str(player)), 10, 10, 32, BLACK);
             }
 
             if (game_state == GAME_WIN) {
-                DrawText("WIN", SCREEN_WIDTH / 2 - 32, SCREEN_HEIGHT / 2 - 32, 64, RED);
-                DrawText(TextFormat("winner: %s", player_str(winner)), 10, 10,64, RED);
+                DrawText(TextFormat("winner: %s", player_str(winner)), 10, 10, 64, WHITE);
             }
 
         EndDrawing();
